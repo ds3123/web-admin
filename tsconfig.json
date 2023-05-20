@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,9 +20,56 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ],
+      "@layout/*": [
+        "components/layout/*"
+      ],
+      "@controller/*": [
+        "components/controller/*"
+      ],
+      "@service/*": [
+        "components/service/*"
+      ],
+      "@data/*": [
+        "components/data/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@schema/*": [
+        "utils/schemas/*"
+      ],
+      "@api/*": [
+        "utils/api/*"
+      ],
+      "@react-query/*": [
+        "utils/react-query/*"
+      ],
+      "@rq_hooks/*": [
+        "utils/react-query/hooks/*"
+      ],
+      "@rq_keys/*": [
+        "utils/react-query/keys/*"
+      ],
+      "@hooks/*": [
+        "hooks/*"
+      ],
+      "@store/*": [
+        "store/*"
+      ],
+      "@reducer/*": [
+        "store/reducers/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
