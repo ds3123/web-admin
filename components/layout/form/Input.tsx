@@ -15,27 +15,29 @@ const Input = <T,>( { type , control , label , name , required , ...rest } : I_C
                                  rules        : { required : required } ,
                                  defaultValue : ''
                               });
-    
-      return <div className="mt-5">
 
-                { required && <b className="relative -top-3 text-red-500 text-xl"> * </b> }
+    
+
+      return <div className="mt-5 relative">
+
+                { required && <b className="absolute -top-3 -left-2 text-red-500 text-xl"> * </b> }
                
-                <label htmlFor = { name as string } className = "text-lg" > { label } : </label>
+                <label htmlFor = { name as string } className = "text-base" > { label } : </label>
                 
-                <div className = "flex items-center mt-1 h-12 border-2  rounded-lg px-2 py-2 md:shadow-sm" >
+                { /* 輸入框 */ }
+                <div className = "flex items-center mt-1 h-12 border  rounded-lg px-2 py-2 md:shadow-sm" >
 
                    <input type      = { type } 
-                          className = "flex-grow p-4 bg-transparent outline-none text-xl text-blue-900 placeholder-gray-400" 
+                          className = "flex-grow p-2 bg-transparent outline-none text-base text-blue-900 placeholder-gray-400" 
                           { ...inputProps } 
                           { ...rest}
                           ref               = { ref } 
-                          id                = { name as string } 
-                          aria-errormessage = "msgID"
-                          aria-invalid      = "true" />
+                          id                = { name as string } />
 
                 </div>
 
-                { ( isTouched && error ) && <span className = "text-xl text-red-500 block mt-2"> { error.message } </span>}
+                { /* 錯誤訊息 */ }
+                <span className = "text-base text-red-500 block mt-2"> { error?.message } </span>
              
              </div> ;
 

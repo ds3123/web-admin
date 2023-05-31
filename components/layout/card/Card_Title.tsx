@@ -14,7 +14,7 @@ type Title = {
 const Card_Title : FC< Title > = ( { title , icon , background } ) => {
 
 
-    return <div className = {  `flex items-center justify-center ${ background ? background : 'bg-white' } p-3 mt-2 mb-6 rounded-full border shadow-md text-2xl` } >
+    return <div className = {  `flex items-center justify-center ${ background ? background : 'bg-white' } p-2 mt-2 mb-6 rounded-full border shadow-md text-lg` } >
     
                { icon } <p className = "ml-3"> { title } </p>
 

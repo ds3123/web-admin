@@ -28,7 +28,7 @@ const Create_Service_Order_Form : FC = () => {
                     <FormProvider { ...methods } > 
 
                         { /*  客人欄位  */ }
-                        <Section_Title icon = { <FaUser size = { 25 } /> }  title = '客戶資料'  >
+                        <Section_Title icon = { <FaUser size = { 22 } /> }  title = '客戶資料'  >
                             <Customer_Field_QueryResult  />
                         </Section_Title>
                         

@@ -7,6 +7,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": [ "jest" , "cypress" , "@testing-library/jest-dom" , "@testing-library/cypress"] ,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -56,6 +57,9 @@
       "@hooks/*": [
         "hooks/*"
       ],
+      "@contexts/*": [
+        "contexts/*"
+      ],
       "@store/*": [
         "store/*"
       ],
@@ -67,9 +71,13 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx" ,    
   ],
   "exclude": [
-    "node_modules"
+    "node_modules" ,
+
+    "./cypress.config.ts",
+    "cypress",
+    
   ]
 }

@@ -58,7 +58,6 @@ const LoginPage = () => {
     // 將所取得的 JWT，設定在客戶端 cookie ( 供後續前端請求時， )
     if( session ) Cookies.set( "jwt_token" , session?.accessToken, { expires: 30 });
 
-    console.log( 'gg' , session ) ;
     
     // 取得 _ 後端資料
     axios.get( "/customers" )

@@ -23,10 +23,10 @@ const Section_Nav : FC < Nav > = ( { options , children } ) => {
     const click_Tag = ( x : Action ) => set_Action( x ) ;
 
 
-    return <div>
+    return <div className="">
 
               { /* 選項頁籤 */ } 
-              <div className = "flex">
+              <div className = "flex mb-10">
 
                 {
                    options.map( ( x  , y ) => 

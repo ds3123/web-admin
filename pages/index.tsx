@@ -106,7 +106,6 @@ const LoginPage = () => {
   }
 
 
-
   /*
       # 設定 _ < Cookie >
       
@@ -118,11 +117,10 @@ const LoginPage = () => {
     
     if( session ){
 
-       Cookies.set( "jwt_token" , session?.accessToken , { expires: 30 } ) ;
-       Cookies.set( "account_id" , session?.userInfo?.account_id , { expires: 30 } ) ;
+      Cookies.set( "jwt_token"  , session?.accessToken          , { expires: 30 } ) ;
+      Cookies.set( "account_id" , session?.userInfo?.account_id , { expires: 30 } ) ;
 
     } 
-     
      
   } , [ session ] ) ;
 

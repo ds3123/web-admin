@@ -16,8 +16,6 @@ const Create_Customer_Form : FC = () => {
      const { methods , onSubmit } = useForm_Provider_Create_Customer() ;
      const { handleSubmit , formState , watch , setValue } = methods ;
 
-   
-
      
      return <form onSubmit = { handleSubmit( onSubmit ) } >
 
@@ -25,7 +23,7 @@ const Create_Customer_Form : FC = () => {
 
                     <FormProvider { ...methods }>
 
-                        <Section_Title icon = { <FaUser size = { 25 } /> }  title = '客戶資料'  >
+                        <Section_Title icon = { <FaUser size = { 22 } /> }  title = '客戶資料'  >
                             <Customer_Field_QueryResult  />
                         </Section_Title>
 

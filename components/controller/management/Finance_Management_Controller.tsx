@@ -1,11 +1,7 @@
 
 import { FC } from 'react' ;
-import Head from "next/head" ;
-import Link from 'next/link'
-import { BsThreeDotsVertical } from "react-icons/bs" ;
-import { AiFillGift } from "react-icons/ai" ;
-import { data } from "@utils/data/fake_customer_data" ;
 import { Page , Section_Banner , Section_Content , Page_Table , Management_Nav } from "@layout/index" ;
+import { Finance_Management_Service } from "@service/index" 
 
 
 
@@ -24,7 +20,7 @@ const Finance_Management_Controller : FC = () => {
                 
                 <Section_Content>
                 
-                   財務
+                   <Finance_Management_Service />
 
                 </Section_Content>
     

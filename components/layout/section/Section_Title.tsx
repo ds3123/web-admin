@@ -19,7 +19,7 @@ const Section_Title : FC< S_Title >= ( { icon , title , children } ) => {
 
                 { icon }
             
-                <p className="text-2xl ml-2"> { title } </p>
+                <p className="text-xl ml-2"> { title } </p>
 
                 { /* 查詢結果 */ }
                 { children }

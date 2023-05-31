@@ -44,7 +44,7 @@ const App_Wrapper : FC< T_Section > = ( props ) => {
 
 
                 { /* 右側 _ 選項內容 */ } 
-                <main className = "md:ml-20 w-full" > 
+                <main className = "md:ml-16 w-full" > 
 
                     { props.children } 
                     

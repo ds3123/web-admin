@@ -12,7 +12,7 @@ interface First extends T_Section {
 
 
 // ＠ 分類表單
-const Class_Form_Service : FC < First > = ( { children , onSubmit  , class_label } ) => {
+const Class_Form_Service : FC < First > = ( { children , onSubmit , class_label } ) => {
 
     // 取得 _ RHF 的 Context 
     const { handleSubmit } = useFormContext() ;
@@ -20,15 +20,15 @@ const Class_Form_Service : FC < First > = ( { children , onSubmit  , class_label
     const onSubmitWrapper = ( data : any ) => {
         
         // 先處理表單的值，然後再调用 onSubmit 函数
-        onSubmit(data);
+        onSubmit( data ) ;
           
     
     };
 
 
-    return <form data-testid = "first-class-form" onSubmit = { handleSubmit( onSubmitWrapper ) } className = "text-xl" >
+    return <form data-testid = "class-form" onSubmit = { handleSubmit( onSubmitWrapper ) } className = "text-base" >
             
-              <p className = "text-xl" > { class_label } : </p>
+              <p className = "text-lg" > { class_label } : </p>
 
               {  children  }
              

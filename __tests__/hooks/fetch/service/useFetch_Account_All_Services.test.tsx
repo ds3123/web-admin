@@ -1,7 +1,6 @@
 
 
 import { renderHook , act, waitFor } from '@testing-library/react' ;
-import { QueryClient, QueryClientProvider } from 'react-query' ;
 import { useFetch_Account_All_Services , useFetch_Service_By_Id } from "@/utils/react-query/hooks/service/useFetchServices";
 import { wrapper } from '@/utils/test_tools/React-Query-Wrapper' ;
 
@@ -20,4 +19,5 @@ test( "測試 _ 服務項目 : 數量、結構" , async() => {
 
     })
 
+    
 }) ;

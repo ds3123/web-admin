@@ -1,8 +1,9 @@
 
-import { render , screen , fireEvent }  from "@testing-library/react" ;
+// 使用自訂 render
+import { fireEvent , render , screen  } from "@utils/test_tools/test-utils" ; 
+
 
 import { FirstClass_Options_Setting_Service } from "@service/index" ;
-
 
 
 const fake_FirstClass = [ 
@@ -35,8 +36,6 @@ test( "是否依照輸入資料( all_First_Classes )，正確顯示 _ 分類名�
     
     render( <FirstClass_Options_Setting_Service all_First_Classes   = { fake_FirstClass }
                                                 convert_First_Class = { fake_Convert }
-                                                current_First_Class = "a" 
-                                                set_First_Class     = { jest.fn() }
                                                 click_Delete_First  = { fake_Click_Delete }  /> ) ;
 
     const options = screen.getAllByRole( 'listitem' ) ;  
@@ -62,14 +61,10 @@ test( "點選 _ 分類刪除鍵，刪除功能 click_Delete_First 是否會被�
 
     render( <FirstClass_Options_Setting_Service all_First_Classes   = { fake_FirstClass }
                                                 convert_First_Class = { fake_Convert }
-                                                current_First_Class = "a" 
-                                                set_First_Class     = { jest.fn() }
                                                 click_Delete_First  = { fake_Click_Delete }  /> ) ;
 
-    
-
      
-    const delete_Btn = screen.getByText( 'x')
+    const delete_Btn = screen.getByText( 'x' )
 
     fireEvent.click( delete_Btn ) ;
 

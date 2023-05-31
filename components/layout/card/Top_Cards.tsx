@@ -1,8 +1,10 @@
 
 
+// 範本 _ 尚未使用 2023.05.28
+
 const Top_Cards = () => {
 
-  return <div className="grid lg:grid-cols-5 gap-4 p-4">
+  return <div className="mt-2 grid lg:grid-cols-5 gap-2 p-2">
             
            <div className = "lg:col-span-2 col-span-1 bg-white flex justify-between w-full border p-4 rounded-lg"> 
                  <div className = "flex flex-col w-full pb-4" >

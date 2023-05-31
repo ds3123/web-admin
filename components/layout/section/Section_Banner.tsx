@@ -1,9 +1,9 @@
 
 import { FC } from 'react' ;
 import { T_Section } from "@/utils/custom_types/layout" ;
-import { MdOutlineAddCircle } from "react-icons/md" ;
-import { useDispatch , useSelector } from 'react-redux' ;
-import { AppDispatch , RootState } from '@/store/store' ;
+import { Create_Button } from "@layout/index" ;
+import { useDispatch } from 'react-redux' ;
+import { AppDispatch } from '@/store/store' ;
 import { set_Right_Panel_Component } from '@reducer/reducer_Layout' ;
 import { Create_Customer_Form ,
          Create_Pet_Form ,
@@ -15,7 +15,6 @@ import { User_Info_Service } from "@service/index" ;
 
 
 type Type = '客戶' | '寵物' | '服務訂單' | '商品' | '商品訂單' | undefined ;
-
 
 interface T_Section_Banner extends T_Section {
 
@@ -43,8 +42,8 @@ const Section_Banner : FC< T_Section_Banner > = ( props ) => {
 
 
     const dispatch = useDispatch< AppDispatch >()
-   
     const btn_Type = props.create_Type ;
+
 
     // 依照資料類別，取得 _ 相對應新增表單元件 
     const create_Component = get_Create_Component( btn_Type ) ;
@@ -55,7 +54,7 @@ const Section_Banner : FC< T_Section_Banner > = ( props ) => {
 
     return <div className = "flex bg-white px-6 py-8 relative">
 
-                <div className = "mr-8" >
+                <div className = "mr-4" >
                    <User_Info_Service /> 
                 </div>
 
@@ -69,14 +68,8 @@ const Section_Banner : FC< T_Section_Banner > = ( props ) => {
                 { /* 新增按鈕 */ }
                 { btn_Type && 
 
-                    <p className = "flex absolute right-10 items-center px-4 py-3 bg-yellow-600 hover:bg-yellow-500 text-white rounded-lg cursor-pointer" 
-                        onClick  = { () => click_Add_Btn() } >
-
-                        <MdOutlineAddCircle size = { 23 } className = "mr-2" />
-                        <span className = "font-bold text-md md:text-lg "> 新增{ btn_Type } </span>
-
-                    </p>
-
+                   <Create_Button onClick = { () => click_Add_Btn() } buttonType = { btn_Type }/>
+                   
                 } 
 
            </div>   

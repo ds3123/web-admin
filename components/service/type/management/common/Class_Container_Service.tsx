@@ -2,6 +2,7 @@
 import { FC } from 'react' ;
 import { FormProvider } from "react-hook-form" ;
 import { Class_Form_Service } from "@service/index" ;
+
 import { Class_Container } from '@/utils/custom_types/form';
 
 
@@ -47,13 +48,13 @@ const Class_Container_Service : FC < Class_Container > = ( { first_Class , secon
 
                        </div>    
                        
-                       { frist_Class_Input }       { /* 輸入框 */ }
+                          { frist_Class_Input }    { /* 輸入框 */ }
     
                     </Class_Form_Service>
     
                </FormProvider> 
 
-             <hr className = "my-20" />
+             <hr className = "my-20 border-2" />
 
                <FormProvider { ...methods_Second } >  
                     

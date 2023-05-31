@@ -1,8 +1,9 @@
 
 import { render , screen , fireEvent, waitFor }  from "@testing-library/react" ;
+
+
 import { Section_Nav } from "@/components/layout";
-import userEvent from '@testing-library/user-event' ;
-import { c } from "msw/lib/glossary-de6278a9";
+
 
 
 const fake_Options = [ '服務' , '方案' , '寵物' , '住宿' ] ;
@@ -26,6 +27,7 @@ test( "依據所輸入 options 內容，渲染相對應選項" , () => {
    
 
 }) ;
+
 
 
 test( "當點選選項，Section_Nav 元件會傳遞相對應值，給其 children 子元件 " , async() => {

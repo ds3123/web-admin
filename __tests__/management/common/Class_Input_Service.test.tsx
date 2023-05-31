@@ -1,6 +1,8 @@
 
 
-import { fireEvent, render , screen, waitFor   }  from "@testing-library/react" ;
+ import { fireEvent , render , screen, waitFor   }  from "@testing-library/react" ;
+ 
+
 import userEvent from "@testing-library/user-event" ;
 import { act } from 'react-dom/test-utils';
 
@@ -8,9 +10,10 @@ import { Class_Form_Service , Class_Input_Service } from "@service/index" ;
 import RHF_Test_Wrapper from "@/utils/test_tools/React-Hook-Form-Wrapper" ;
 
 
-
-
 describe( "" , () => { 
+
+    // useEvent 物件
+    const user = userEvent.setup() ;
 
     const fake_onSubmit = jest.fn(); 
 
@@ -32,7 +35,6 @@ describe( "" , () => {
     beforeEach( () => fake_onSubmit.mockClear() ) ;     
 
 
-
     test( "輸入框 _ 未填寫，提交鈕為失效( disable ) 狀態 ; 填寫，提交鈕為有效狀態" , async() => {
 
         // render 元件
@@ -49,7 +51,7 @@ describe( "" , () => {
 
 
         // 填寫文字
-        await userEvent.type( input , "test" ) ;
+        await user.type( input , "test" ) ;
 
 
         // 提交鈕 _ 生效
@@ -67,18 +69,16 @@ describe( "" , () => {
         
         const input  = screen.getByLabelText( "請輸入 _ 第一層分類 :" ) as any ;
 
+        // 錯誤訊息，一開始未顯示
+        const error  = screen.queryByText( "須填寫 : 服務第一層分類" ) ;
 
-        await act( async() => {
+        expect( error ).not.toBeInTheDocument();
 
-        //input.focus();
-        // input.blur();
 
-        // userEvent.tab();
+        await user.click( input ) ;
+        await user.tab() ;
 
-        }) ;
-
-        
-
+        // expect( error ).toBeInTheDocument() ;
 
         // expect( input ).toHaveErrorMessage( "須填寫 : 服務第一層分類" )
 
@@ -87,14 +87,16 @@ describe( "" , () => {
 
     test( "輸入文字、點選提交後，onSubmit 函式有成功接收輸入框欄位值" , async() => {
 
+        
+
         // render 元件
         render( <Wrapper/> ) ;
             
         const input = screen.getByLabelText( "請輸入 _ 第一層分類 :" ) as any ;
-        const form  = screen.getByTestId('first-class-form') ;
+        const form  = screen.getByTestId('class-form') ;
 
 
-        await userEvent.type( input , "test" ) ;
+        await user.type( input , "test" ) ;
         fireEvent.submit( form ) ;
 
         await waitFor( () => {

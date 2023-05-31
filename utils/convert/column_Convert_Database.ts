@@ -13,7 +13,9 @@ import {
     db_Services_Columns,
     db_Service_Order_Columns,
     useForm_Plan_Form,
-    db_Plan_Columns
+    db_Plan_Columns,
+    useForm_Account_Form,
+    db_Account_Columns
   } from "@utils/custom_types/form" ;
 
 
@@ -160,6 +162,29 @@ export const columns_Covert_Plan = ( data : useForm_Plan_Form ) : db_Plan_Column
             note       : data.management_plan_note
        
           } ;
+
+} ;
+
+
+// 帳號 ( 資料表 : accounts )
+export const columns_Covert_Account = ( data : useForm_Account_Form ) : db_Account_Columns  => {
+
+ 
+  return {
+
+            county     : data.account_county ,
+            district   : data.account_district , 
+            zipcode    : data.account_zipcode ,
+
+            serial     : data.account_serial ,      // 店家 _ 區域編號
+
+            shop_brand : data.account_shop_brand ,
+            shop_name  : data.account_shop_name , 
+            shop_owner : data.account_shop_owner , 
+
+            auth_level : data.account_auth_level    // 暫時沒用到 2023.05.31
+     
+        } ;
 
 } ;
 

@@ -68,12 +68,14 @@ interface I_Custom_TimeInput<T>{
 // 自訂 <select /> 表單元素
 interface I_Custom_Select <T> {
 
-  control        :  Control< T > ;  // RHF 物件類型 ( 須指定一個 Control 泛型 )
+  control        : Control< T > ;  // RHF 物件類型 ( 須指定一個 Control 泛型 )
   label          : string ;        // 標籤名稱
   name           : keyof T ;       // 欄位名稱  
   required       : boolean ;       // 是否必填 
   select_options : string[] ;      // 下拉選項
   default_value? : string ;        // 預設值
+
+  onChange?      : any ;           // 變動處理
 
 }
 
@@ -101,8 +103,8 @@ interface I_Custom_TextArea<T>{
 interface useForm_Customer_Form {
 
   customer_name     : string ;  // 姓名
-  customer_id?      : any ;  // 身分證字號
-  customer_birthday : any ;  // 生日
+  customer_id?      : any ;     // 身分證字號
+  customer_birthday : any ;     // 生日
   customer_mobile   : string ;  // 手機號碼
   customer_telphone : string ;  // 家用電話
   customer_line     : string ;  // Line
@@ -216,7 +218,7 @@ interface useForm_Service_Order_Form {
    service_type   : string ; // 服務類型
    service_date   : string ; // 到店日期
    arrival_time   : string ; // 到店時間
-   service_price  : string ; // 服務價格
+   service_price  : string | number ; // 服務價格
    service_note   : string ; // 服務備註
    
    adjust_amount  : any ;    // 自訂調整價格
@@ -225,7 +227,7 @@ interface useForm_Service_Order_Form {
    payment_method : string ; // 付款方式
    payment_date   : string ; // 付款日期
    
-   amount_paid    : string ; // 實付金額
+   amount_paid    : string | number ; // 實付金額
 
    shop_status    : string ; // 到店狀態
 
@@ -255,10 +257,10 @@ interface db_Service_Order_Columns {
   service_date   : string ;
   arrival_time   : string ;
 
-  service_price  : string ; 
-  adjust_amount  : string ;
+  service_price  : string | number ; 
+  adjust_amount  : string | number ;
   adjust_reason  : string ;
-  amount_paid    : string ;
+  amount_paid    : string | number ;
 
   payment_method : string ;
   payment_date   : string ;
@@ -364,11 +366,13 @@ interface db_Pet_Class_Columns {
 // # 服務：項目 ( RHF 表單  )
 interface useForm_Service_Form {
 
-  management_service_first_class : string ;  // 服務 _ 第 1 層分類
+  management_service_first_class       : string ;  // 服務 _ 第 1 層分類
+  management_service_first_class_price : string ;  // 服務 _ 第 1 層分類 : 價格
 
 }
 
-// # 服務 : 項目 ( 資料庫 )
+// # 服務 : 項目 ( 資料庫 )npm uninstall start-server-and-test --save-dev
+
 interface db_Services_Columns {
 
   id?        : string | number ;
@@ -385,7 +389,9 @@ interface db_Services_Columns {
 // # 服務：項目_內容 ( RHF 表單  )
 interface useForm_Service_Content_Form {
 
-  management_service_second_class : string ;  // 服務 _ 第 2 層分類
+  management_service_second_class       : string ;  // 服務 _ 第 2 層分類
+  management_service_second_class_price : string ;  // 服務 _ 第 2 層分類 : 價格
+  
 
 }
 
@@ -491,8 +497,6 @@ type First_Option = {
 
   all_First_Classes   : any[] ;
   
-  current_First_Class : string ;
-  set_First_Class     : ( x : any ) => void ;
 
   click_Delete_First? : ( e : any , id : string ) => void ;
 
@@ -505,10 +509,9 @@ type Second_Option = {
   convert_Second_Class? : ( x : any ) => string ;
 
   all_Second_Classes    : any[] ;
-
   current_Second_Class? : string ;
+  
   set_Second_Class?     : ( x : any ) => void ;
-
   click_Delete_Second?  : ( e : any , id : string ) => void ;
 
 }
@@ -532,8 +535,6 @@ type Multi_Input_Column = {
   require : boolean ;
   span    : string ;
 
-
-
 }
 
 
@@ -544,3 +545,42 @@ interface Multi_Input_Data {
 }
 
 
+// # 帳號設定 ( RHF 表單 )
+interface useForm_Account_Form {
+
+   account_county     : string ; // 縣市
+   account_district   : string ; // 行政區
+   account_zipcode    : string ; // 郵遞區號
+
+   account_serial     : string ; // 帳號 _ 區域編號
+
+   account_shop_brand : string ; // 店家品牌
+   account_shop_name  : string ; // 店家名稱
+   account_shop_owner : string ; // 店家擁有者
+   
+   account_auth_level : string ; // 店家權限
+   
+}
+
+
+
+// 帳號設定 ( 資料庫 )
+interface db_Account_Columns {
+
+   id?        : any ;
+
+   county     : string ;
+   district   : string ;
+   zipcode    : string ;
+
+   serial     : string ;
+
+   shop_brand : string ; 
+   shop_name  : string ;
+   shop_owner : string ;
+
+   auth_level : string ;
+
+}
+
+ 

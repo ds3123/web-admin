@@ -44,7 +44,7 @@ const Customer_Field_QueryResult : FC = () => {
 
 
 
-    return <div className="md:col-span-4 p-3 h-[70px] overflow-hidden absolute -top-[15px] left-[130px]">
+    return <div className="md:col-span-4 p-3 h-[70px] overflow-hidden absolute -top-[18px] left-[130px]">
     
                     { /* 依手機號碼查詢  */ }
                      {  

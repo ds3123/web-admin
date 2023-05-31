@@ -14,12 +14,9 @@ export const serviceKeys = {
     "account_all_service_items"  : () =>  [ "account_all_service_items"  ] , 
 
 
-    // 取得 _ 特定店家，特定日期 _ 服務訂單
-    "account_date_service_orders" : ( service_date : string ) => [  "account_date_service_orders" , service_date  ] ,
+    // 取得 _ 特定店家，特定 [ 到店日期 ] _ 服務訂單
+    "account_service_orders_by_service_date" : ( service_date : string ) => [  "account_service_orders_by_service_date" , service_date  ] ,
 
-
-    // 取得 _ 特定店家，特定日期 _ [ 預約 ] 服務訂單
-    "account_date_service_appointments" : ( service_date : string ) => [  "account_date_service_appointments" , service_date  ] ,
 
     // 特定服務項目
     "service_by_id" : ( service_id : string ) =>  [ "service_by_id"  , service_id ] ,  

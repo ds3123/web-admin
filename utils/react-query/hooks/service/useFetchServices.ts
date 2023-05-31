@@ -6,8 +6,7 @@ import {
          fetch_Account_All_Services , 
          fetch_Service_By_Id , 
          fetch_Service_Price_By_Id , 
-         fetch_Account_Date_Service_Orders ,
-         fetch_Account_Date_Service_Appointments 
+         fetch_Account_Service_Orders_By_Service_Date ,
        } from "@api/api_Service"
 
 
@@ -28,46 +27,24 @@ export const useFetch_Account_All_Services = () => {
     return { data , isLoading , isFetching  , isError , error , isPreviousData , refetch }  
   
     
-  }
-
+}
 
 
 // 取得 _ 特定店家，特定日期 _ 服務訂單
-export const useFetch_Account_Date_Service_Orders = ( service_Date : string ) => {
+export const useFetch_Account_Service_Orders_By_Service_Date = ( service_Date : string ) => {
 
   // 預設值
   const fallback = [] as any[] ;  
 
   const { data = fallback , isLoading , isFetching  , isError , error , isPreviousData , refetch } = useQuery( 
-                                        serviceKeys.account_date_service_orders( service_Date ) ,
-                                        () => fetch_Account_Date_Service_Orders( service_Date ) , 
+                                        serviceKeys.account_service_orders_by_service_date( service_Date ) ,
+                                        () => fetch_Account_Service_Orders_By_Service_Date( service_Date ) , 
                                         { enabled : !!service_Date }
                                       ) ; 
                                     
   return { data , isLoading , isFetching  , isError , error , isPreviousData , refetch  }  
 
 }
-
-
-
-
-
-// 取得 _ 特定店家，特定日期 _ [ 預約 ] 服務訂單
-export const useFetch_Account_Date_Service_Appointments = ( service_Date : string ) => {
-
-  // 預設值
-  const fallback = [] as any[] ;  
-
-  const { data = fallback , isLoading , isFetching  , isError , error , isPreviousData , refetch } = useQuery( 
-                                        serviceKeys.account_date_service_appointments( service_Date ) ,
-                                        () => fetch_Account_Date_Service_Appointments( service_Date ) , 
-                                        { enabled : !!service_Date }
-                                      ) ; 
-                                    
-  return { data , isLoading , isFetching  , isError , error , isPreviousData , refetch  }  
-
-}
-
 
 
 // 取得 _ 特定服務 : 項目
@@ -85,8 +62,6 @@ export const useFetch_Service_By_Id = ( service_Id : string ) => {
   return { data , isLoading , isFetching  , isError , error , isPreviousData , refetch  }  
 
 }
-
-
 
 
 

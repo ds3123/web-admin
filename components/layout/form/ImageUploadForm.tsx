@@ -30,19 +30,21 @@ const ImageUploadForm: React.FC< ImageUploadFormProps > = ( { onUpload } ) => {
 
 
   const onDrop = useCallback(
-    (e: React.DragEvent<HTMLDivElement>) => {
+
+    ( e : React.DragEvent<HTMLDivElement>) => {
       e.preventDefault();
       if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
         const files = Array.from(e.dataTransfer.files);
         setImages((prevImages) => [...prevImages, ...files]);
         onUpload(files);
       }
-    },
-    [onUpload]
+    } ,
+    [ onUpload ]
+
   );
 
   
-  const removeImage = (index: number, e: React.MouseEvent<HTMLButtonElement>) => {
+  const removeImage = (index: number, e : React.MouseEvent<HTMLButtonElement> ) => {
     e.preventDefault();
     e.stopPropagation();
     setImages((prevImages) => prevImages.filter((_, i) => i !== index));

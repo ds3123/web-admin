@@ -13,7 +13,7 @@ const Submit_Button : FC< T_Submit_Button > = ( { btn_name , is_valid } ) => {
                             
                 <BsFillSendCheckFill size = { 24 } className ="mr-3"/> 
                 
-                <p className="tracking-widest text-xl"> { btn_name } </p> 
+                <p className="tracking-widest text-lg"> { btn_name } </p> 
             
             </button> 
     

@@ -7,7 +7,7 @@ const createJestConfig = nextJest({
 
 // Add any custom config to be passed to Jest
 const customJestConfig = {
-
+  
   setupFilesAfterEnv : [ "<rootDir>/setupTests.ts" ] ,
 
   testEnvironment: 'jest-environment-jsdom',
@@ -30,12 +30,20 @@ const customJestConfig = {
     "@rq_hooks/(.*)"    : "<rootDir>/utils/react-query/hooks/$1" ,
     
     "@hooks/(.*)"    : "<rootDir>/hooks/$1" ,
+    "@contexts/(.*)"    : "<rootDir>/contexts/$1" ,
 
     "@api/(.*)"        : "<rootDir>/utils/api/$1" ,
     
     "@/(.*)(.*)"       : "<rootDir>/$1$2" ,
 
   },
+
+  // for 套件 jest-watch-typeahead
+  watchPlugins: [
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
+
 
 }
 

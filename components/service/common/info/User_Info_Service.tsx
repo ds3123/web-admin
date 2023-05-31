@@ -69,26 +69,26 @@ const User_Info_Service : FC = () => {
 
 
     
-    return <div className = "flex items-center border-2 rounded-full pl-8 pr-20 py-2 relative" >
+    return <div className = "flex items-center border-2 rounded-full pl-7 pr-12 py-2 relative" >
 
                 {/* <img loading   = "lazy" src = "https://placeimg.com/640/480/any" 
                     className = "mr-5 inline-flex cursor-pointer h-11 w-11 rounded-full" alt = "" /> */}
 
                 <div>
 
-                    <p> 成員 : <span className = "text-green-600 inline-block mt-1" > 
+                    <p className = "text-sm"> 成員 : <span className = "text-green-600 inline-block mt-1" > 
                         { userInfo?.name } </span> 
-                        { userInfo?.position_type && <span className="text-sm text-gray-400"> ( { userInfo?.position_type } )  </span> } 
+                        { userInfo?.position_type && <span className="text-xs text-gray-400"> ( { userInfo?.position_type } )  </span> } 
                     </p>
 
-                    <p className="flex items-center"> 店家 : 
+                    <p className="flex items-center text-sm"> 店家 : 
 
                         { /* 下拉選單 ( for 切換帳號用 ) */ }
                         { userInfo?.id === 1 &&
 
-                            <span className = "flex relative top-[0px] items-center ml-1 mr-3 mt-1 h-9 p-3" >
+                            <span className = "flex relative -top-[3px] items-center ml-1 mr-3 mt-1 h-9 p-3 " >
 
-                                <select value = { account_Id } onChange = { e => handle_Account_Change( e ) } className = "flex-grow outline-none text-base -ml-4 text-red-600">
+                                <select value = { account_Id } onChange = { e => handle_Account_Change( e ) } className = "flex-grow outline-none -ml-4 text-red-600">
 
                                     { 
 
@@ -124,7 +124,8 @@ const User_Info_Service : FC = () => {
                 </div>
   
                 { /* 登出鈕 */ }
-                <AiOutlineLogout onClick = { () => click_Sign_Out() } className = "absolute right-5 text-gray-400 hover:text-black cursor-pointer" size = { 35 } />
+                <AiOutlineLogout onClick   = { () => click_Sign_Out() } 
+                                 className = "absolute right-3 text-gray-400 hover:text-black cursor-pointer" size = { 35 } />
 
            </div>
 

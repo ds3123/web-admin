@@ -6,7 +6,7 @@ import { FC } from 'react' ;
 const Section_Content : FC<T_Section> = ( props ) => {
 
 
-    return <div className="bg-white mt-1 px-8 pt-16 pb-24" >
+    return <div className="bg-white mt-1 px-8 pt-16 pb-24 " >
               
               { props.children }
 

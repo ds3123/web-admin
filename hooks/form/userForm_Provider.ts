@@ -4,8 +4,9 @@
 // # 函式 _ 新增
 import { useCreate_Customer , useCreate_Customer_With_Id } from '@rq_hooks/customer/useCreateCustomer' ;
 import { useCreate_Pet , useCreate_Pet_Class , useCreate_Pet_Species , useCreate_Pet_With_Id } from '@rq_hooks/pet/useCreatePet' ;
-import { useCreate_Service , useCreate_Service_Content , useCreate_Service_Price , useCreate_Service_Order } from '@rq_hooks/service/useCreateService' ;
+import { useCreate_Service , useCreate_Service_With_Id , useCreate_Service_Content , useCreate_Service_Content_With_Id , useCreate_Service_Price , useCreate_Service_Order } from '@rq_hooks/service/useCreateService' ;
 import { useCreate_Plan , useCreate_Plan_Content } from '@rq_hooks/plan/useCreatePlan' ;
+import { useCreate_Account } from '@rq_hooks/account/useCreateAccount' ;
 
 // # 函式 _ 修改
 import { useUpdate_Customer } from '@rq_hooks/customer/useUpdateCustomer' ;
@@ -33,7 +34,8 @@ import { db_Customers_Columns ,
          useForm_ServicePrice_SecondClass_Form,
          useForm_Plan_Form,
          useForm_Plan_Content_Form,
-         useForm_PlanPrice_FristClass_Form
+         useForm_PlanPrice_FristClass_Form,
+         useForm_Account_Form
         } from '@/utils/custom_types/form';
 
 
@@ -43,7 +45,8 @@ import { columns_Covert_Customer ,
          columns_Covert_Pet_Class , 
          columns_Covert_Service_Order ,
          columns_Covert_Service ,
-         columns_Covert_Plan
+         columns_Covert_Plan ,
+         columns_Covert_Account
        } from '@utils/convert/column_Convert_Database' ;
 
 // # 封裝 _ useForm() / noSubmit 事件
@@ -68,6 +71,7 @@ import {
          schema_UpdateServiceOrder 
         } from "@/utils/schemas/schema_service" ;
 import { schema_CreateProduct } from "@/utils/schemas/schema_product" ;
+import { schema_CreateAccount } from "@/utils/schemas/schema_account" ;
 
 
 // # API
@@ -574,7 +578,7 @@ export const useForm_Provider_Update_Service_Order = ( service : db_Service_Orde
        obj_Service_Order.pet_id      = service.pet_id ;
 
 
-       // 新增客戶
+       // 修改客戶
        update_Service_Order( obj_Service_Order ) ;
 
     } ;
@@ -602,23 +606,27 @@ export const useForm_Provider_Create_Service = ( current_Services : any[] ) => {
 
 
     // 新增函式 
-    const create_Service = useCreate_Service() ;   
+    const create_Service_With_Id = useCreate_Service_With_Id() ; // 新增 _ 服務 ( 第一層 )
+    const create_Price           = useCreate_Service_Price() ;   // 新增 _ 服務價格  
 
 
     // 提交新增函式
-    const submit_Create = ( data : useForm_Service_Form ) => { 
+    const submit_Create = async( data : useForm_Service_Form ) => { 
+
+        
 
         // 轉換欄位 
         const obj_Service = columns_Covert_Service( data ) ;
 
         
         // 驗證是否重複
-        const service = data.management_service_first_class ;  // 所輸入第一層分類
+        const service   = data.management_service_first_class ;  // 所輸入第一層分類
         let isDuplicate = false ;
-        
+
+
         current_Services.forEach( x => {
 
-            if( x.pet_class === service ){
+            if( x?.name === service ){
 
                 alert( '已經存在此類別，請改用其他名稱' ) ;
                 methods.setValue( 'management_service_first_class' , '' ) ;
@@ -629,14 +637,22 @@ export const useForm_Provider_Create_Service = ( current_Services : any[] ) => {
 
         }) ;
 
+
         // 沒有重複，才新增
         if( !isDuplicate ){
 
-            // 新增種類
-            create_Service( obj_Service ) ;
+            // 新增服務 ( 並取得資料表 services 的 id )
+            const created_Service_Id = await create_Service_With_Id( obj_Service ) ;
+
+            // 新增服務價格
+            create_Price({ 
+                           service_id : created_Service_Id ,
+                           price      : data.management_service_first_class_price
+                         }) ;
 
             // 清空輸入框
-            methods.setValue(  'management_service_first_class' , '' ) ;
+            methods.setValue( 'management_service_first_class' , '' ) ;
+            methods.setValue( 'management_service_first_class_price' , '' ) ;
 
         }
 
@@ -646,7 +662,7 @@ export const useForm_Provider_Create_Service = ( current_Services : any[] ) => {
     // 封裝 _ onSubmit 
     const onSubmit = useOnSubmit_Edit< useForm_Service_Form >( submit_Create ) ; 
      
-    return {  methods , onSubmit  }
+    return { methods , onSubmit }
 
 
 }
@@ -655,23 +671,27 @@ export const useForm_Provider_Create_Service = ( current_Services : any[] ) => {
 // 新增 _ 服務 : 項目內容
 export const useForm_Provider_Create_Service_Content = ( current_Service_Id : string , all_Service_Contents : any[]  ) => {
 
+    
     // 封裝 _ useForm() 
-    const methods  = useForm_Edit< useForm_Service_Content_Form >( schema_Management_Service_Second_Class ) ;
+    const methods = useForm_Edit< useForm_Service_Content_Form >( schema_Management_Service_Second_Class ) ;
 
     // 新增函式
-    const create_Service_Content = useCreate_Service_Content() ;
-    
+    const create_Service_Content_With_Id = useCreate_Service_Content_With_Id() ; // 新增 _ 服務項目內容
+    const create_Price                   = useCreate_Service_Price() ;           // 新增 _ 服務價格  
+
+
     // 提交新增函式
-    const submit_Create = ( data : useForm_Service_Content_Form ) => { 
+    const submit_Create = async( data : useForm_Service_Content_Form ) => { 
 
         
         // 驗證是否重複
         const service_content = data.management_service_second_class ;  // 所輸入第二層分類
         let isDuplicate = false ;
+
         
         all_Service_Contents.forEach( x => {
 
-            if( x.pet_class === service_content ){
+            if( x?.content === service_content ){
 
                 alert( '已經存在此類別，請改用其他名稱' ) ;
                 methods.setValue( 'management_service_second_class' , '' ) ;
@@ -682,14 +702,29 @@ export const useForm_Provider_Create_Service_Content = ( current_Service_Id : st
 
         }) ;
 
+
         // 沒有重複，才新增
         if( !isDuplicate ){
 
-            // 新增種類
-            create_Service_Content( { service_id : current_Service_Id , content : data.management_service_second_class } ) ;
+
+            // 新增種類 ( 並取得資料表 service_contents 的 id )
+            const created_Service_Content_Id = await create_Service_Content_With_Id( { 
+                                                        service_id : current_Service_Id , 
+                                                        content    : data.management_service_second_class 
+                                                     }) ; 
+
+
+            // 新增服務價格
+            create_Price({ 
+                            service_id         : current_Service_Id ,
+                            service_content_id : created_Service_Content_Id ,
+                            price              : data.management_service_second_class_price
+                         }) ;
+
 
             // 清空輸入框
-            methods.setValue(  'management_service_second_class' , '' ) ;
+            methods.setValue( 'management_service_second_class' , '' ) ;
+            methods.setValue( 'management_service_second_class_price' , '' ) ;
 
         }
 
@@ -1039,11 +1074,6 @@ export const useForm_Provider_Create_SecondClass_PlanPrice = ( first_Class : any
 }
 
 
-
-
-
-
-
 // 新增 _ 商品
 export const useForm_Provider_Create_Product = () => {
 
@@ -1090,7 +1120,44 @@ export const useForm_Provider_Create_Product = () => {
  }
 
 
-// 新增 _ 
+
+// 新增 _ 帳戶
+export const useForm_Provider_Create_Account = () => {
+
+
+    // 新增函式
+    const create_Account = useCreate_Account() ; 
+
+
+    // 提交新增函式
+    const submit_Create = ( data : useForm_Account_Form ) => {
+
+        // 轉換欄位 
+        const obj_Account = columns_Covert_Account( data ) ;
+
+        // 新增帳戶
+        create_Account( obj_Account ) ;
+
+    } ;
+
+
+    // ---------------------
+
+
+    // 封裝 _ useForm() 
+    const methods  = useForm_Edit< useForm_Account_Form >( schema_CreateAccount ) ;
+   
+
+    // 封裝 _ onSubmit 
+    const onSubmit = useOnSubmit_Edit< useForm_Account_Form >( submit_Create ) ; 
+    
+   
+    return {  methods , onSubmit  }
+   
+
+} ;
+
+
 
 // 更新 _
 

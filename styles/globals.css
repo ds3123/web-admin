@@ -2,7 +2,7 @@
 @tailwind components;
 
 
-   .nav_btn{ @apply px-5 py-3  text-gray-800 tracking-wider text-xl rounded-full ml-5 }
+   .nav_btn{ @apply px-4 py-2 text-gray-800 tracking-wider text-lg rounded-full ml-3 }
 
 
 

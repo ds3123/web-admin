@@ -71,7 +71,7 @@ const Service_Info_Form : FC< I_Form_Type > = ( { type } ) => {
 
                 <TextArea control = { control } label = '服務備註' name = 'service_note'  required = { false }  />
 
-                <div className = "mt-6 text-xl" >
+                <div className = "mt-6 text-base" >
                     <p className = "" > 應付金額 : </p>
                     <p className = "relative top-3 text-red-600"> $ { amount_Paid } </p>               
                 </div>
@@ -82,12 +82,12 @@ const Service_Info_Form : FC< I_Form_Type > = ( { type } ) => {
 
                 <DateInput control = { control } label = "付款日期" name = "payment_date" required = { true } />
 
-                <div className = "mt-6 flex text-xl items-center" >
+                <div className = "mt-6 flex text-base items-center" >
                     <p className = "" > 經手人員 : </p>
                     <p className = "ml-2 text-blue-900"> { userInfo?.name }  </p>               
                 </div>
 
-                <div className = "mt-6 flex text-xl items-center" >
+                <div className = "mt-6 flex text-base items-center" >
                     <p className = "" > 建檔日期 : </p>
                     <p className = "ml-2 text-blue-900"> { moment( new Date ).format( 'YYYY-MM-DD' ) }  </p>               
                 </div>

@@ -31,7 +31,7 @@ const Page_Table : FC< I_Table_Children > = ( props ) => {
     return <div className = "bg-white p-7 mt-[2px] min-h-screen" >
 
              { /* 導覽列 */ }
-             <div className = "flex items-center justify-between mt-8" >
+             <div className = "flex items-center justify-between mt-10" >
 
                 { /* 店家資訊 */ }
                 <Table_ShopInfo_Service total_data_sum = { total_data_sum } />
@@ -42,12 +42,10 @@ const Page_Table : FC< I_Table_Children > = ( props ) => {
              </div>
 
              { /* 資料表單 */ }
-             <div className = "min-h-[830px] flex items-center justify-center relative" >
-
+             <div className = "min-h-[830px] flex items-center justify-center relative mt-16" >
 
                 { /* 各種資料狀態說明 : 下載中、未搜尋到資料、目前尚未新增資料 */ } 
                 <Table_DataSign_Service isFetching = { isFetching } search = { search } total_data_sum = { total_data_sum }  />
-                
 
                 { /* 資料表單 */ }  
                 { 
@@ -55,8 +53,8 @@ const Page_Table : FC< I_Table_Children > = ( props ) => {
 
                      <table className = 'table-auto w-full mt-8 mb-8 absolute top-0' >
 
-                          <thead className="border-b-2 text-lg">
-                             <tr>{ title_Columns?.map( ( title , index ) =>  <th key = { index } className = "px-5 py-3"> { title } </th> ) }</tr>   
+                          <thead className="border-b-2 text-base">
+                             <tr>{ title_Columns?.map( ( title , index ) => <th key = { index } className = "px-5 py-3"> { title } </th> ) }</tr>   
                           </thead>
 
                           <tbody>

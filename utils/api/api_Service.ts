@@ -48,26 +48,24 @@ export const fetch_Service_Price_By_Class_Id = ( first_class_id : string , secon
 
 
 
-// 取得 _ 特定店家，特定日期 _ 服務訂單
-export const fetch_Account_Date_Service_Orders = ( service_date : string  ) => {   
+// 取得 _ 特定店家，特定 [ 到店日期 ] _ 服務訂單
+export const fetch_Account_Service_Orders_By_Service_Date = ( service_date : string  ) => {   
 
     const account_id = Cookies.get( "account_id" ) ;  // 使用者 : 所屬商店 id
 
-    return axios.get< any[] >( `/service_orders/account/${ account_id }/date/${ service_date }` ).then( res => res.data ) ;
+    return axios.get< any[] >( `/service_orders/account/${ account_id }/service_date/${ service_date }` ).then( res => res.data ) ;
 
 }
 
 
-
-// 取得 _ 特定店家，特定日期 _ [ 預約 ] 服務訂單
-export const fetch_Account_Date_Service_Appointments = ( appointment_date : string  ) => {   
+// 取得 _ 特定店家，特定 [ 付款日期 ] _ 服務訂單
+export const fetch_Account_Service_Orders_By_Payment_Date = ( payment_date : string  ) => {   
 
     const account_id = Cookies.get( "account_id" ) ;  // 使用者 : 所屬商店 id
 
-    return axios.get< any[] >( `/service_orders/account/${ account_id }/appointment_date/${ appointment_date }` ).then( res => res.data ) ;
+    return axios.get< any[] >( `/service_orders/account/${ account_id }/payment_date/${ payment_date }` ).then( res => res.data ) ;
 
 }
-
 
         
 // [ POST ] ---------------
@@ -79,7 +77,6 @@ export const create_Service_Order = ( obj : any ) => axios.post( "/service_order
 
 // 新增 _ 服務 : 項目
 export const create_Service = ( obj : any ) => axios.post( "/services" , obj ) ;
-
 
 
 // 新增 _ 服務 : 項目內容

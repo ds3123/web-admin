@@ -15,10 +15,10 @@ type Delete = {
 const Delete_Button : FC< Delete > = ( { delete_Func , data_Id } ) => {
 
 
-    return <div className = "flex absolute shadow-md z-20 top-12 right-20 px-3 py-2 rounded-lg text-xl text-white bg-red-300 hover:bg-red-500 cursor-pointer" 
+    return <div className = "flex items-center absolute shadow-md z-20 top-12 right-20 px-3 py-2 rounded-lg text-base text-white bg-red-300 hover:bg-red-500 cursor-pointer" 
                   onClick = { () => { if( window.confirm( "確認要刪除此筆資料？" ) ) delete_Func( data_Id ) } }> 
 
-                  <RiDeleteBin6Fill size = { 26 } /> &nbsp;
+                  <RiDeleteBin6Fill size = { 20 } /> &nbsp;
 
                   <p> 刪除 </p>
 

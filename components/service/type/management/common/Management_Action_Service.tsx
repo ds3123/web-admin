@@ -1,11 +1,6 @@
 
-
-
-
 import { FC } from 'react' ;
 import { Setting_Management_Controller ,
-         Price_Management_Controller , 
-         Service_Management_Controller , 
          Product_Management_Controller , 
          Account_Management_Controller , 
          Finance_Management_Controller ,
@@ -26,11 +21,7 @@ export type M_Action = {
 const Management_Action_Service : FC< M_Action > = ( { action } ) => {
 
 
-   if( action === 'setting' )  return <div data-testid = "setting" >  <Setting_Management_Controller />  </div> ;
-   if( action === 'price' )    return <div data-testid = "price" >    <Price_Management_Controller />    </div> ;
-   
-   if( action === 'service' )  return <div data-testid = "service" >  <Service_Management_Controller />  </div> ;
-   
+   if( action === 'setting' )  return <div data-testid = "setting" >  <Setting_Management_Controller />  </div> ;   
    if( action === 'product' )  return <div data-testid = "product" >  <Product_Management_Controller />  </div> ;
    if( action === 'account' )  return <div data-testid = "account" >  <Account_Management_Controller />  </div> ;
    if( action === 'employee' ) return <div data-testid = "employee" > <Employee_Management_Controller /> </div> ;

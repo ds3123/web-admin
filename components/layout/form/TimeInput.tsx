@@ -26,7 +26,7 @@ const TimeInput = <T,>({ control, name, label, required } : I_Custom_DateInput<T
                         name         = { name as string }
                         defaultValue = { currentTime } 
                         render       = { 
-                                         ( { field } ) => <input id = { name as string } className = "flex w-full items-center mt-1 h-12 border-2 rounded-lg py-2 md:shadow-sm p-4 text-xl" 
+                                         ( { field } ) => <input id = { name as string } className = "flex w-full items-center mt-1 h-12 border rounded-lg py-2 md:shadow-sm p-4 text-base" 
                                                                  type      = "time" { ...field } />
                                         } />
 
