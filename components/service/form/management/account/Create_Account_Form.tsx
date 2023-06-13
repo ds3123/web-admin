@@ -1,6 +1,6 @@
 
 
-import { FC , useState , useEffect } from 'react' ;
+import { FC } from 'react' ;
 import { FormWrapper , Section_Title } from '@layout/index' ;
 import { Account_Form } from '@service/index' ;
 
@@ -8,9 +8,10 @@ import { useForm_Provider_Create_Account } from '@/hooks/form/userForm_Provider'
 import { FormProvider } from "react-hook-form" ;
 import { BsShop } from "react-icons/bs" ;
 
-
+ 
 // # 表單 _ 新增帳號
 const Create_Account_Form : FC = () => {
+
 
     const { methods , onSubmit } = useForm_Provider_Create_Account() ;
     const { handleSubmit , formState , watch , setValue } = methods ;

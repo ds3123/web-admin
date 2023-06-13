@@ -558,13 +558,12 @@ interface useForm_Account_Form {
    account_shop_name  : string ; // 店家名稱
    account_shop_owner : string ; // 店家擁有者
    
-   account_auth_level : string ; // 店家權限
+   account_auth_level? : string | undefined ; // 店家權限
    
 }
 
 
-
-// 帳號設定 ( 資料庫 )
+// # 帳號設定 ( 資料庫 )
 interface db_Account_Columns {
 
    id?        : any ;
@@ -579,8 +578,65 @@ interface db_Account_Columns {
    shop_name  : string ;
    shop_owner : string ;
 
-   auth_level : string ;
+   auth_level : string | undefined  ;
 
 }
 
- 
+
+// # 員工設定 ( RHF 表單 )
+interface useForm_Employee_Form {
+
+
+    employee_account  : string ;
+    employee_password : string ;
+
+    employee_name     : string ; 
+    employee_nickname : string ;
+
+    employee_sex      : string ;
+    employee_id       : string ;  // 身分證字號  
+
+    employee_mobile   : string ; 
+    employee_telphone : string ; 
+
+    employee_birthday : string ; 
+    employee_email    : string ;
+    employee_line     : string ;
+    employee_address  : string ;
+
+    employee_salary_type     : string ;
+    employee_position_type   : string ;
+    employee_position_status : string ;
+
+
+} 
+
+
+// # 員工設定 ( 資料庫 )
+interface db_Employee_Columns {
+
+     id?             : any ;
+     account_id      : any ;
+     
+     account         : string ;
+     password        : string ;
+
+     name            : string ;
+     nickname        : string ;
+
+     sex             : string ;
+     serial_id       : string ;  // 身分證字號  
+
+     mobile_phone    : string ;
+     tel_phone       : string ;
+
+     birthday        : string ;
+     email           : string ;
+     line            : string ;
+     address         : string ;
+
+     salary_type     : string ;
+     position_type   : string ;
+     position_status : string ;
+
+} 

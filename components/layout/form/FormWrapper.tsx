@@ -12,7 +12,8 @@ interface FWrapper extends T_Section {
 
 }
 
-// ＠ 一般表單外圍
+
+// ＠ 一般表單外圍 ( 之後刪除 )
 const FormWrapper : FC< FWrapper > = ( { children , title , isValid } ) => {
 
 
@@ -24,7 +25,7 @@ const FormWrapper : FC< FWrapper > = ( { children , title , isValid } ) => {
 
                         { children }
 
-                    <div className="md:col-span-4 mt-32 mb-32">  
+                    <div className = "md:col-span-4 mt-32 mb-32">  
                         <Submit_Button btn_name = { `提交 _ ${ title }` } is_valid = { isValid } />
                     </div>
                     

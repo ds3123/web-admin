@@ -9,19 +9,15 @@ interface Nav {
 
 }
 
-
 type Action = '服務' | '寵物' ;
-
 
 
 // 第二層導覽選項列
 const Section_Nav : FC < Nav > = ( { options , children } ) => {
 
-
     const [ action , set_Action ] = useState< Action >( options[0] as Action ) ;
 
     const click_Tag = ( x : Action ) => set_Action( x ) ;
-
 
     return <div className="">
 

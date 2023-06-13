@@ -11,29 +11,30 @@ import React from 'react';
 
 export type M_Action = {
 
-    action : string | string[] | undefined ;       
+   action : string | string[] | undefined ;       
 
 }
 
 
-
-// @ 依照 
+// @ 依照 url，回傳相對應頁面元件
 const Management_Action_Service : FC< M_Action > = ( { action } ) => {
 
-
-   if( action === 'setting' )  return <div data-testid = "setting" >  <Setting_Management_Controller />  </div> ;   
-   if( action === 'product' )  return <div data-testid = "product" >  <Product_Management_Controller />  </div> ;
-   if( action === 'account' )  return <div data-testid = "account" >  <Account_Management_Controller />  </div> ;
-   if( action === 'employee' ) return <div data-testid = "employee" > <Employee_Management_Controller /> </div> ;
-   if( action === 'finance' )  return <div data-testid = "finance" >  <Finance_Management_Controller />  </div> ;
+   if( action === 'finance' )  return <Finance_Management_Controller /> ;
+   if( action === 'setting' )  return <Setting_Management_Controller /> ;   
+   
+   if( action === 'product' )  return <Product_Management_Controller /> ;
+   
+   if( action === 'account' )  return <Account_Management_Controller /> ;
+   if( action === 'employee' ) return <Employee_Management_Controller /> ;
 
 
    // 無此頁面
    return <div className = "flex" >
 
-              <div className="p-5 bg-gray-500 text-white"> 404 沒有此頁面  </div>
+              <div className="p-5 bg-gray-500 text-white"> 404 無此頁面  </div>
    
           </div>
+
           
 
 } ;

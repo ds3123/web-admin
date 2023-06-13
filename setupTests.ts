@@ -13,7 +13,8 @@ import { server } from "./utils/msw/server" ;
 
 
 // Mock Service Worker 監聽 Server 生命週期 ( 先註解，改由 _ 個別測試檔案中設定 )
-beforeAll( () => server.listen( { onUnhandledRequest : "error" } ) ) ;
+// beforeAll( () => server.listen( { onUnhandledRequest : "error" } ) ) ;  // 有請求但未列入 handler，會警告
+beforeAll( () => server.listen() ) ;
 afterEach( () => server.restoreHandlers() ) ;
 afterAll( () => server.close() ) ;
 

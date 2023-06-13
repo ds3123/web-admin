@@ -2,7 +2,7 @@
 import { FC } from 'react' ;
 import { Update_Customer_Form } from "@service/index" ;
 import { db_Customers_Columns } from '@/utils/custom_types/form';
-import { Row_Button } from "@layout/index" ;
+import { Row_Button , Table_Tr } from "@layout/index" ;
 
 
 
@@ -22,23 +22,23 @@ const Customer_TableRow_Service: FC< Customercus_Row > = ( { customer } ) => {
     const cus_Pets = customer?.pet ;
 
 
-    return <tr >
+    return <Table_Tr> 
 
-                <td className = "px-5 py-3" >      
+                <td>      
 
                     <Row_Button component = { <Update_Customer_Form customer = { customer } /> } >
                         { customer?.name } 
                     </Row_Button>
                     
                 </td>
-                <td className = "px-5 py-3 text-center"> { customer?.serial_id } </td>
-                <td className = "px-5 py-3 text-center"> { customer?.mobile_phone } </td>
-                <td className = "px-5 py-3"> { cus_Pets?.map( ( x:any , y:any ) => <span key ={ y }>  { x.name } </span> )  }  </td>
-                <td className = "px-5 py-3"> { customer?.address } </td>
-                <td className = "px-5 py-3 text-center"> 歷史 </td>
-                <td className = "px-5 py-3 text-center"> { customer?.created_at?.slice(0,10) } </td>
+                <td> { customer?.serial_id } </td>
+                <td> { customer?.mobile_phone } </td>
+                <td> { cus_Pets?.map( ( x:any , y:any ) => <span key ={ y }>  { x.name } </span> )  }  </td>
+                <td className = "text-left"> { customer?.address } </td>
+                <td> 歷史 </td>
+                <td> { customer?.created_at?.slice(0,10) } </td>
 
-          </tr>
+           </Table_Tr>
 
 
 } ;

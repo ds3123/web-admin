@@ -15,7 +15,9 @@ import {
     useForm_Plan_Form,
     db_Plan_Columns,
     useForm_Account_Form,
-    db_Account_Columns
+    db_Account_Columns ,
+    useForm_Employee_Form ,
+    db_Employee_Columns
   } from "@utils/custom_types/form" ;
 
 
@@ -148,7 +150,7 @@ export const columns_Covert_Service_Order = ( data : useForm_Service_Order_Form 
 
 
 // 自訂方案 ( 資料表 : plans )
-export const columns_Covert_Plan = ( data : useForm_Plan_Form ) : db_Plan_Columns  => {
+export const columns_Covert_Plan = ( data : useForm_Plan_Form ) : db_Plan_Columns => {
 
     const account_id = Cookies.get( "account_id" ) ;  // 使用者 : 所屬商店 id
 
@@ -169,7 +171,6 @@ export const columns_Covert_Plan = ( data : useForm_Plan_Form ) : db_Plan_Column
 // 帳號 ( 資料表 : accounts )
 export const columns_Covert_Account = ( data : useForm_Account_Form ) : db_Account_Columns  => {
 
- 
   return {
 
             county     : data.account_county ,
@@ -187,4 +188,42 @@ export const columns_Covert_Account = ( data : useForm_Account_Form ) : db_Accou
         } ;
 
 } ;
+
+
+// 帳號 ( 資料表 : employees )
+export const columns_Covert_Employee = ( data : useForm_Employee_Form ) : db_Employee_Columns  => {
+
+  const account_id = Cookies.get( "account_id" ) ;  // 使用者 : 所屬商店 id
+
+  return {
+
+            account_id      : account_id ? parseInt( account_id ) : account_id  ,
+
+            account         : data.employee_account ,
+            password        : data.employee_password ,
+
+            name            : data.employee_name ,
+            nickname        : data.employee_nickname ,
+
+            sex             : data.employee_sex ,
+            serial_id       : data.employee_id ,  // 身分證字號  
+
+            mobile_phone    : data.employee_mobile ,
+            tel_phone       : data.employee_telphone ,
+
+            birthday        : moment( data.employee_birthday ).format( 'YYYY-MM-DD' ) ,
+            email           : data.employee_email ,
+            line            : data.employee_line ,
+            address         : data.employee_address ,
+
+            salary_type     : data.employee_salary_type ,
+            position_type   : data.employee_position_type ,
+            position_status : data.employee_position_status ,
+            
+        } ;
+
+} ;
+
+
+
 

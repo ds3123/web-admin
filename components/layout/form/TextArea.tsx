@@ -24,11 +24,11 @@ const TextArea = <T,>( { control, label, name, required, ...rest } : I_Custom_Te
 
             {required && <b className="relative -top-3 text-red-500 text-xl"> * </b>}
 
-            <label htmlFor={ name as string } className="text-lg"> { label } : </label>
+            <label htmlFor={ name as string } className="text-lg"> { label } </label>
 
             <div className="flex items-center mt-1 border rounded-lg py-2 md:shadow-sm">
 
-                <textarea id = { name as string } className = "flex-grow p-4 bg-transparent outline-none text-base text-blue-900 placeholder-gray-400"
+                <textarea id = { name as string } aria-required = { required } className = "flex-grow p-4 bg-transparent outline-none text-base text-blue-900 placeholder-gray-400"
                           {...inputProps}
                           {...rest}
                           rows = { 4 }

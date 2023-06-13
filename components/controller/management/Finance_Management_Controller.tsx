@@ -1,6 +1,6 @@
 
 import { FC } from 'react' ;
-import { Page , Section_Banner , Section_Content , Page_Table , Management_Nav } from "@layout/index" ;
+import { Management_Page } from "@layout/index" ;
 import { Finance_Management_Service } from "@service/index" 
 
 
@@ -9,22 +9,16 @@ import { Finance_Management_Service } from "@service/index"
 const Finance_Management_Controller : FC = () => {
 
 
-    return <Page> 
+    return <div data-testid = "finance_management_controller" >
 
-                { /* 區塊 Banner */ }
-                <Section_Banner>
+              <Management_Page> 
+               
+                 { /* 表單內容 */ }
+                 <Finance_Management_Service />
 
-                   <Management_Nav />
-
-                </Section_Banner>
-                
-                <Section_Content>
-                
-                   <Finance_Management_Service />
-
-                </Section_Content>
-    
-           </Page>
+              </Management_Page>
+      
+           </div>
 
 } ;
 

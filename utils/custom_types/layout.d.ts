@@ -47,12 +47,8 @@ interface I_Table {
 
 
     title_Columns   : string[] ;  // 標題欄位
- 
-    search          : string ;    // 搜尋關鍵字
-    set_Search      : any ;       // 設定 _ 搜尋關鍵字
-    current_Page    : number ;    // 目前頁碼
-    set_CurrentPage : any         // 設定 _ 目前頁碼
- 
+
+   
     query_Key       : any ;       // 查詢 key ( React Query )
     query_Api       : any ;       // 查詢 api ( React Query )
      

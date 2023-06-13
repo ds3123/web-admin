@@ -1,8 +1,8 @@
 
 import { FC } from 'react' ;
 import { db_Service_Order_Columns } from '@/utils/custom_types/form';
-import { Row_Button } from "@layout/index" ;
-import { Update_Service_Order_Form }  from "@service/index" ;
+import { Row_Button , Table_Tr } from "@layout/index" ;
+import { Update_Service_Order_Form  }  from "@service/index" ;
 
 
 type Servcie_Row = {
@@ -27,7 +27,11 @@ const Servcie_TableRow_Service: FC< Servcie_Row > = ( { service_order } ) => {
     const pet          = service_order?.pet ;
 
 
-    return <tr >
+    const service_Price = Number( service_order?.service_price )  ;
+    const adjust_Amount = Number( service_order?.adjust_amount ) ;
+
+
+    return <Table_Tr> 
 
               <td className = "px-5 py-3"> 
 
@@ -42,13 +46,13 @@ const Servcie_TableRow_Service: FC< Servcie_Row > = ( { service_order } ) => {
               <td className = "px-5 py-3"> { pet?.name } ( { pet?.pet_class } / { pet?.pet_species } ) </td>
               <td className = "px-5 py-3 text-center"> { service_order?.service_price } </td>
               <td className = "px-5 py-3 text-center"> { service_order?.adjust_amount }  </td>
-              <td className = "px-5 py-3 text-center"> { service_order?.service_price + service_order?.adjust_amount } </td>
+              <td className = "px-5 py-3 text-center"> { service_Price + adjust_Amount } </td>
               <td className = "px-5 py-3 text-center"> { service_order?.amount_paid } </td>
               <td className = "px-5 py-3 text-center"> { service_order?.payment_method } </td>
               <td className = "px-5 py-3 text-center"> { service_order?.payment_date} </td>
               <td className = "px-5 py-3 text-center"> { service_order?.service_date} </td>
                
-           </tr>
+           </Table_Tr>
 
 
 } ;

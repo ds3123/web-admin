@@ -48,7 +48,7 @@ const Query_Date_Type : FC< Set_Query > = ( { set_Query_Obj } ) => {
     } , [ query_Date , query_Type ] ) ;
 
     
-    return <div className = "flex w-1/2 px-10" >
+    return <div data-testid = "Query_Date_Type" className = "flex w-1/2 px-10" >
 
                 <p onClick = { () => set_Query_Type( "到店日期" ) } className = { `${ query_Type === "到店日期" ? "bg-black text-white" : "bg-gray-200" } w-2/6 h-12 flex justify-center items-center rounded-full mr-5 tracking-widest cursor-pointer` }> 到店日期 </p>
                 <p onClick = { () => set_Query_Type( "付款日期" ) } className = { `${ query_Type === "付款日期" ? "bg-black text-white" : "bg-gray-200" } w-2/6 h-12 flex justify-center items-center rounded-full mr-10 tracking-widest cursor-pointer` } > 付款日期 </p>

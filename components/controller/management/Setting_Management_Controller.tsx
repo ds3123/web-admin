@@ -1,7 +1,7 @@
 
 
 import { FC } from 'react' ;
-import { Page , Section_Banner , Section_Content , Management_Nav , Section_Nav } from "@layout/index" ;
+import { Management_Page , Section_Nav } from "@layout/index" ;
 import { Service_Management_Service , Pet_Management_Service , Plan_Management_Service } from '@service/index'
 
 
@@ -13,39 +13,35 @@ type Action = '服務' | '寵物' | '方案' | '住宿'  ;
 const Setting_Management_Controller : FC = () => {
 
 
-    return <Page> 
+    return <div data-testid = "setting_management_controller">
 
-              <Section_Banner>
+               <Management_Page>
+                        
+                     { /* 資料內容 */ }      
+                     <Section_Nav options = {  [ '服務' , '方案' , '寵物' , '住宿'  ] } >
 
-                 <Management_Nav />
+                           {
 
-              </Section_Banner>
+                              ( value : Action ) => {
 
-              <Section_Content>
-                   
-                 <Section_Nav options = {  [ '服務' , '方案' , '寵物' , '住宿'  ] } >
+                                 if( value === '服務' ) return <Service_Management_Service />
+                                 if( value === '方案' ) return <Plan_Management_Service />
+                                 if( value === '寵物' ) return <Pet_Management_Service />
+                                 if( value === '住宿' ) return <></>
 
-                    {
-                    
-                      ( value : Action ) => {
+                                 return <div className="border-2"> { value } </div> 
 
-                           if( value === '服務' ) return <Service_Management_Service />
-                           if( value === '方案' ) return <Plan_Management_Service />
-                           if( value === '寵物' ) return <Pet_Management_Service />
-                           if( value === '住宿' ) return <></>
+                              } 
 
-                           return <div className="border-2"> { value } </div> 
+                           }
 
-                      } 
-                    
-                    }
+                     </Section_Nav>
 
-                 </Section_Nav>
-
-              </Section_Content>
+               </Management_Page>
+               
+           </div>
     
-           </Page>
-
+    
 } ;
 
 

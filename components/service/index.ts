@@ -44,7 +44,6 @@ export { default as Pet_Management_Service } from "./type/management/setting/pet
 export { default as Service_Management_Service } from "./type/management/setting/service/Service_Management_Service" ;
 export { default as Plan_Management_Service } from "./type/management/setting/plan/Plan_Management_Service" ;
 
-
 export { default as Class_Input_Service } from "./type/management/common/Class_Input_Service" ;
 export { default as Class_Multi_Input_Service } from "./type/management/common/Class_Multi_Input_Service" ;
 export { default as Class_Form_Service } from "./type/management/common/Class_Form_Service" ;
@@ -56,4 +55,10 @@ export { default as FirstClass_Options_Plan_Service } from "./type/management/co
 export { default as Management_Action_Service } from "./type/management/common/Management_Action_Service" ;
 
 export { default as Create_Account_Form } from "./form/management/account/Create_Account_Form" ;
+export { default as Update_Account_Form } from "./form/management/account/Update_Account_Form" ;
 export { default as Account_Form } from "./form/management/account/Account_Form" ;
+export { default as Account_Management_Service } from "./type/management/account/Account_Management_Service" ;
+
+export { default as Create_Employee_Form } from "./form/management/employee/Create_Employee_Form" ;
+export { default as Employee_Form } from "./form/management/employee/Employee_Form" ;
+export { default as Employee_Management_Service } from "./type/management/employee/Employee_Management_Service" ;

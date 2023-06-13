@@ -22,17 +22,18 @@ const Input = <T,>( { type , control , label , name , required , ...rest } : I_C
 
                 { required && <b className="absolute -top-3 -left-2 text-red-500 text-xl"> * </b> }
                
-                <label htmlFor = { name as string } className = "text-base" > { label } : </label>
+                <label htmlFor = { name as string } className = "text-base" > { label } </label>
                 
                 { /* 輸入框 */ }
                 <div className = "flex items-center mt-1 h-12 border  rounded-lg px-2 py-2 md:shadow-sm" >
 
-                   <input type      = { type } 
-                          className = "flex-grow p-2 bg-transparent outline-none text-base text-blue-900 placeholder-gray-400" 
+                   <input type              = { type } 
+                          className         = "flex-grow p-2 bg-transparent outline-none text-base text-blue-900 placeholder-gray-400" 
                           { ...inputProps } 
-                          { ...rest}
+                          { ...rest }
                           ref               = { ref } 
-                          id                = { name as string } />
+                          id                = { name as string } 
+                          aria-required     = { required } />
 
                 </div>
 

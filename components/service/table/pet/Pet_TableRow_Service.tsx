@@ -2,7 +2,7 @@
 import { FC } from 'react' ;
 import { db_Pets_Columns } from '@/utils/custom_types/form' ;
 import { Update_Pet_Form } from "@service/index" ;
-import { Row_Button } from "@layout/index" ;
+import { Row_Button , Table_Tr } from "@layout/index" ;
 
 
 
@@ -22,7 +22,7 @@ const Pet_TableRow_Service: FC< Pet_Row > = ( { pet } ) => {
     const pet_Cus = pet?.customer ;
 
 
-    return <tr >
+    return <Table_Tr>
 
                 <td className = "px-5 py-3 text-center"> 
 
@@ -41,7 +41,7 @@ const Pet_TableRow_Service: FC< Pet_Row > = ( { pet } ) => {
                 <td className = "px-5 py-3"> 4 </td>
                 <td className = "px-5 py-3 text-center"> { pet?.created_at?.slice(0,10) }   </td>
                
-          </tr>
+           </Table_Tr>
 
 
 } ;

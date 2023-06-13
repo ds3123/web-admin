@@ -8,12 +8,11 @@ import { Management_Action_Service } from '@/components/service';
 const Management_Action : FC = () : JSX.Element => {
 
    const router     = useRouter() ; 
-   const { action } = router.query  ; 
- 
-
+   const { action } = router.query   ; 
+   
    return <Management_Action_Service action = { action } />
+  
           
-
 } ;
 
 export default Management_Action

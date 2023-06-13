@@ -15,7 +15,7 @@ interface S_Title extends T_Section{
 const Section_Title : FC< S_Title >= ( { icon , title , children } ) => {
 
 
-    return <div className = "flex items-center col-span-4 relative" >
+    return <div data-testid = "Section_Title" className = "flex items-center col-span-4 relative" >
 
                 { icon }
             

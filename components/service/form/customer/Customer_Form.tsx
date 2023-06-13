@@ -31,7 +31,7 @@ const Customer_Form : FC = () => {
 
                 <DateInput control = { control } label = "生日" name = "customer_birthday"  required = { false }  />
 
-                <div className="md:col-span-2">
+                <div className = "md:col-span-2">
                     <Input type = "text" control = { control } label = '通訊地址' name = 'customer_address' required = { false } />
                 </div>
 

@@ -9,7 +9,7 @@ import { AppDispatch } from '@/store/store' ;
 
 interface Row extends T_Section {
  
-   component : JSX.Element ;
+   component : JSX.Element | null ;
 
 }
 
@@ -25,7 +25,7 @@ const Row_Button : FC < Row > = ( { children , component } ) => {
     const click_Update_Btn = () =>  dispatch( set_Right_Panel_Component( component ) ) ;
  
 
-    return <div className = "bg-purple-100 hover:bg-purple-200 p-3 rounded-lg text-center" >
+    return <div className = "bg-purple-100 hover:bg-purple-200 py-3 my-2 rounded-lg text-center" >
 
               <p className = "text-md cursor-pointer tracking-wider" onClick = { () => click_Update_Btn() } > 
                            

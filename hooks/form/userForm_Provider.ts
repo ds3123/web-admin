@@ -7,11 +7,14 @@ import { useCreate_Pet , useCreate_Pet_Class , useCreate_Pet_Species , useCreate
 import { useCreate_Service , useCreate_Service_With_Id , useCreate_Service_Content , useCreate_Service_Content_With_Id , useCreate_Service_Price , useCreate_Service_Order } from '@rq_hooks/service/useCreateService' ;
 import { useCreate_Plan , useCreate_Plan_Content } from '@rq_hooks/plan/useCreatePlan' ;
 import { useCreate_Account } from '@rq_hooks/account/useCreateAccount' ;
+import { useCreate_Employee } from '@rq_hooks/employee/useCreateEmployee'
 
 // # 函式 _ 修改
 import { useUpdate_Customer } from '@rq_hooks/customer/useUpdateCustomer' ;
 import { useUpdate_Pet } from '@rq_hooks/pet/useUpdatePet' ;
 import { useUpdate_Service_Price , useUpdate_Service_Order } from '@rq_hooks/service/useUpdateService' ;
+import { useUpdate_Account } from '@rq_hooks/account/useUpdateAccount' ;
+
 
 
 // # 資料類型
@@ -35,7 +38,8 @@ import { db_Customers_Columns ,
          useForm_Plan_Form,
          useForm_Plan_Content_Form,
          useForm_PlanPrice_FristClass_Form,
-         useForm_Account_Form
+         useForm_Account_Form,
+         db_Account_Columns
         } from '@/utils/custom_types/form';
 
 
@@ -71,13 +75,12 @@ import {
          schema_UpdateServiceOrder 
         } from "@/utils/schemas/schema_service" ;
 import { schema_CreateProduct } from "@/utils/schemas/schema_product" ;
-import { schema_CreateAccount } from "@/utils/schemas/schema_account" ;
+import { schema_CreateAccount , schema_UpdateAccount } from "@/utils/schemas/schema_account" ;
 
 
 // # API
 import { fetch_Account_Customer_By_Mobile } from '@/utils/api/api_Customer';
 import { fetch_Service_Price_By_Class_Id } from '@/utils/api/api_Service';
-import Shop_Status from '@/components/service/type/index/Shop_Status';
 
 
 
@@ -1120,7 +1123,6 @@ export const useForm_Provider_Create_Product = () => {
  }
 
 
-
 // 新增 _ 帳戶
 export const useForm_Provider_Create_Account = () => {
 
@@ -1159,12 +1161,61 @@ export const useForm_Provider_Create_Account = () => {
 
 
 
-// 更新 _
+// 更新 _ 帳戶
+export const useForm_Provider_Update_Account = ( account : db_Account_Columns ) => {
 
 
-// 新增 _ 
+    // 服務訂單 _ 預設值
+    const default_Account_Values : useForm_Account_Form =  {
+ 
+                                        account_county     : account.county ,
+                                        account_district   : account.district ,
+                                        account_zipcode    : account.zipcode ,
 
-// 更新 _
+                                        account_serial     : account.serial , 
+
+                                        account_shop_brand : account.shop_brand ,
+                                        account_shop_name  : account.shop_name ,
+                                        account_shop_owner : account.shop_owner 
+
+                                   } ;
+
+    // 修改函式 
+    const update_Account = useUpdate_Account() ;                                  
+
+
+    // 提交新增函式
+    const submit_Update = ( data : useForm_Account_Form ) => {
+
+       // 轉換欄位 
+       const obj_Account = columns_Covert_Account( data ) as any ;
+       obj_Account.id    = account.id  ; 
+      
+       // 修改帳戶
+       update_Account( obj_Account ) ;
+
+    } ;
+
+
+    // 封裝 _ useForm() 
+    const methods  = useForm_Edit< useForm_Account_Form >( schema_UpdateAccount , default_Account_Values ) ;
+
+    // 封裝 _ onSubmit 
+    const onSubmit = useOnSubmit_Edit< useForm_Account_Form >( submit_Update )  ;  
+
+
+    return { methods , onSubmit }
+
+
+}
+
+
+// 新增 _ 員工 
+
+
+
+
+// 更新 _ 員工
 
 
 // 新增 _ 

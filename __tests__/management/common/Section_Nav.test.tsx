@@ -1,7 +1,5 @@
 
 import { render , screen , fireEvent, waitFor }  from "@testing-library/react" ;
-
-
 import { Section_Nav } from "@/components/layout";
 
 

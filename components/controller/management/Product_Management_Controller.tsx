@@ -1,11 +1,6 @@
 
 import { FC } from 'react' ;
-import Head from "next/head" ;
-import Link from 'next/link'
-import { BsThreeDotsVertical } from "react-icons/bs" ;
-import { AiFillGift } from "react-icons/ai" ;
-import { data } from "@utils/data/fake_customer_data" ;
-import { Page , Section_Banner , Section_Content , Page_Table , Management_Nav } from "@layout/index" ;
+import { Management_Page } from "@layout/index" ;
 
 
 
@@ -13,25 +8,17 @@ import { Page , Section_Banner , Section_Content , Page_Table , Management_Nav }
 const Product_Management_Controller : FC = () => {
 
 
-    return <Page> 
+    return <div data-testid = "product_management_controller">
 
-                { /* 區塊 Banner */ }
-                <Section_Banner>
+                <Management_Page>
 
-                   <Management_Nav />
+                     商品
 
-                </Section_Banner>
-
-                <Section_Content>
-                
-                  商品
-
-                </Section_Content>
-
-                
+                </Management_Page>
+                    
+           </div>
     
-           </Page>
-
+    
 } ;
 
 

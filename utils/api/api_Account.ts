@@ -20,8 +20,11 @@ export const fetch_All_Accounts_By_Zipcode = ( zipcode : string ) => axios.get< 
 export const create_Account = ( obj : any ) => axios.post( "/accounts" , obj ) ;
 
 
-
 // [ PUT ] ---------------
+
+// 修改 _ 寵物
+export const update_Account_By_Id = ( obj : any ) => axios.put( `/accounts/${ obj.id }` , obj ) ;
+
 
 
 

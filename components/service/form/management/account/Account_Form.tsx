@@ -5,8 +5,8 @@ import { Input , Select } from '@layout/index' ;
 import { useFormContext } from 'react-hook-form';
 import { useForm_Account_Form } from '@/utils/custom_types/form';
 import { TwZipCode_Select } from "@layout/index"
-
 import { useFetch_All_Accounts_By_Zipcode } from '@/utils/react-query/hooks/account/useFetchAccounts';
+import { Zipcode_Info } from '@/utils/custom_types/string';
 
 
 const Account_Form : FC = () => {
@@ -40,7 +40,7 @@ const Account_Form : FC = () => {
        setValue( "account_district" , zipcode_Info["district"] ) ; // 行政區  
        setValue( "account_zipcode"  , zipcode_Info["zipcode"] ) ;  // 郵遞區號
 
-       setValue( "account_serial" , shop_Serial ) ;                // 店家 _ 區域編號
+       setValue( "account_serial" , shop_Serial ) ;               // 店家 _ 區域編號
        
     } , [ zipcode_Info , zipcode_Accounts ] ) ;
 
@@ -59,12 +59,14 @@ const Account_Form : FC = () => {
 
               <div className = "mt-5 relative" >
                     
-                <label className = "text-base" > 郵遞區號 : </label> 
+                <label className = "text-base" > 郵遞區號 </label> 
                     
-                <div className = "flex items-center mt-[4px] h-12 p-3 md:shadow-sm " >
+                <div className = "flex items-center h-12 p-3 md:shadow-sm " >
 
-                   <span className = " text-lg text-red-600">  { zipcode_Info["zipcode"] } </span> &nbsp;
-                   ( 已建立帳號數 : &nbsp; <span className = "text-blue-600" > { zipcode_Accounts.length } </span> &nbsp;  )
+                   <p className = " text-lg text-red-600">  { zipcode_Info["zipcode"] } </p> &nbsp;
+                   <p className="text-sm"> 
+                        ( 已建立帳號數 : <span className = "text-blue-600" > { zipcode_Accounts.length } </span> ) 
+                   </p>
 
                 </div>
                     

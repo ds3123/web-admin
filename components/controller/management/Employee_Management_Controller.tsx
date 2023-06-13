@@ -1,8 +1,12 @@
 
 import { FC } from 'react' ;
-import { Page , Section_Banner , Page_Table , Management_Nav } from "@layout/index" ;
-import { useEffect_Table_Props } from '@controller/common/hooks/useEffect_Table_Props' ;
-import { Pet_TableRow_Service } from '@service/index' ;
+import { Management_Page , Create_Button } from "@layout/index" ;
+import { useDispatch } from 'react-redux' ;
+import { AppDispatch } from '@/store/store' ;
+
+import { Create_Employee_Form , Employee_Management_Service } from '@/components/service' ;
+import { set_Right_Panel_Component } from '@reducer/reducer_Layout' ;
+
 
 
 
@@ -11,26 +15,28 @@ import { Pet_TableRow_Service } from '@service/index' ;
 const Employee_Management_Controller : FC = () => { 
 
 
-    // 分頁表單所需 props
-    const table_Props = useEffect_Table_Props( 'pet' ) ;
+    const dispatch = useDispatch< AppDispatch >() ;
 
 
-    return <Page> 
+    // 點選 _ 新增按鈕 : 開啟、設定 _ 右側元件
+    const click_Create_Employee = () => dispatch( set_Right_Panel_Component( <Create_Employee_Form /> ) ) ;
 
-              <Section_Banner>
 
-                 <Management_Nav />
+    return <div data-testid = "employee_management_controller">
 
-              </Section_Banner>
+               <Management_Page>
 
-              { /* 資料表單 */ }
-              <Page_Table { ...table_Props } >
-                  
-                 { parentValue => parentValue?.map( ( pet : any , idx : number ) => <Pet_TableRow_Service key = { idx } pet = { pet } /> )  }
+                   { /* 新增按鈕 */ } 
+                   <div className = "relative -top-[180px]" >
+                      <Create_Button onClick = { click_Create_Employee }  buttonType = '員工' />
+                   </div>
 
-              </Page_Table>
-    
-           </Page>
+                   { /* 資料表單 */ }
+                   <Employee_Management_Service />
+                
+                </Management_Page> 
+
+           </div>
 
 
 }

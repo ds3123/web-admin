@@ -7,8 +7,10 @@ import Page_Button from "./Page_Button"
 type pages_Nav = {
 
       pages_Sum      : number ; // 總計頁數
+
       current_Page   : number ; // 目前頁數    
       setPage        : any ;    // 設定頁數
+      
       isPreviousData : boolean ;
     
     }
@@ -41,7 +43,6 @@ const Page_Button_Nav = ( { pages_Sum , current_Page , setPage , isPreviousData 
 
 
    const pagesArray  = create_PageButton_Nav( pages_Sum , current_Page ) ;
-   
 
 
    const isFirstPage    = current_Page === 1 ;
@@ -50,7 +51,6 @@ const Page_Button_Nav = ( { pages_Sum , current_Page , setPage , isPreviousData 
    const isLastPage     = current_Page === pages_Sum ;
 
    return <div className='mt-5 mb-7'>
-
             
             <button className = { `p-2 ${ isFirstPage ? '' : 'bg-gray-100' } w-20 mx-2 rounded-lg ` }    onClick = { () => setPage( 1 ) }               disabled = { isFirstPage } > 第一頁 </button>
             <button className = { `p-2 ${ isPreviousPage ? '' : 'bg-gray-100' } w-20 mx-2 rounded-lg ` } onClick = { () => setPage( current_Page - 1) } disabled = { isPreviousPage } > 上一頁 </button>

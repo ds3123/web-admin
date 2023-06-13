@@ -51,7 +51,7 @@ const TwZipCode_Select : FC< ZipCode > = ( { set_Zipcode_Info } ) => {
             { /* 縣市 */ } 
             <div className = "mt-5 relative">
 
-                <label htmlFor = "account_county" className = "text-base" > 縣 市 : </label> 
+                <label htmlFor = "account_county" className = "text-base" > 縣 市</label> 
 
                 <div className = "flex items-center mt-[4px] h-12 border rounded-lg p-3 md:shadow-sm text-blue-900" >
 
@@ -68,7 +68,7 @@ const TwZipCode_Select : FC< ZipCode > = ( { set_Zipcode_Info } ) => {
             { /* 郵遞區號 */ } 
             <div className = "mt-5 relative">
 
-                <label htmlFor = "account_district" className = "text-base" > 行政區 : </label> 
+                <label htmlFor = "account_district" className = "text-base" > 行政區</label> 
 
                 <div className = "flex items-center mt-[4px] h-12 border rounded-lg p-3 md:shadow-sm text-blue-900" >
 

@@ -25,11 +25,11 @@ const Select = <T,>( { control , label , name , required , select_options , defa
 
                 { required && <b className="absolute -top-3 -left-2 text-red-500 text-xl"> * </b> }
                 
-                <label htmlFor = { name as string } className = "text-base" > { label } : </label> 
+                <label htmlFor = { name as string } className = "text-base" > { label } </label> 
                 
                 <div className = "flex items-center mt-[4px] h-12 border rounded-lg p-3 md:shadow-sm text-blue-900" >
 
-                    <select { ...inputProps }  id = { name as string } className = "flex-grow outline-none text-base">
+                    <select { ...inputProps }  id = { name as string } aria-required = { required } className = "flex-grow outline-none text-base">
 
                       { select_options.map( ( x , y ) => <option key = { y } value = { x } > { x } </option> ) }
                    

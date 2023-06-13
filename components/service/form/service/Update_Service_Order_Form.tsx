@@ -5,7 +5,6 @@ import { FormWrapper } from '@layout/index' ;
 import { useForm_Provider_Update_Service_Order } from '@/hooks/form/userForm_Provider';
 import { db_Service_Order_Columns } from '@/utils/custom_types/form';
 import { Delete_Button } from '@/components/layout';
-import { useDelete_Customer } from "@rq_hooks/customer/useDeleteCustomer" ;
 import { useDelete_Service_Order } from "@rq_hooks/service/useDeleteService" ;
 import { FormProvider } from "react-hook-form" ;
 import { Service_Info_Form } from "@service/index" ;

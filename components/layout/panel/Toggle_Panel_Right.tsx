@@ -1,6 +1,6 @@
 import { FC } from 'react' ;
 import { useDispatch , useSelector } from 'react-redux';
-import { AppDispatch , RootState  } from '@store/store'
+import { AppDispatch , RootState  } from '@store/store' ;
 import { close_Right_Panel } from '@reducer/reducer_Layout'
 
 
@@ -21,7 +21,7 @@ const Toggle_Panel_Right : FC = () => {
    const close_Panel = () => dispatch( close_Right_Panel() ) ;
   
 
-   return <>
+   return <div data-testid = "Toggle_Panel_Right" >
     
             { is_Right_Panel_Open && ( 
                         
@@ -41,7 +41,7 @@ const Toggle_Panel_Right : FC = () => {
                     )
             }
     
-          </>
+          </div>
 
 } ;
 

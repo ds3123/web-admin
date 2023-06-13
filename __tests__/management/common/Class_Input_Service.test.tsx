@@ -40,10 +40,9 @@ describe( "" , () => {
         // render 元件
         render( <Wrapper /> ) ;
         
-        const input  = screen.getByLabelText( "請輸入 _ 第一層分類 :" ) as any ;
+        const input  = screen.getByLabelText( "請輸入 _ 第一層分類" ) as any ;
         const submit = screen.getByRole( "button" , { name : "提交新增" } ) ;
     
-
         // 輸入框為空
         expect( input.value ).toBe( "" ) ;
         // 提交鈕 _ 失效
@@ -67,7 +66,7 @@ describe( "" , () => {
         // render 元件
         render( <Wrapper /> ) ;
         
-        const input  = screen.getByLabelText( "請輸入 _ 第一層分類 :" ) as any ;
+        const input  = screen.getByLabelText( "請輸入 _ 第一層分類" ) as any ;
 
         // 錯誤訊息，一開始未顯示
         const error  = screen.queryByText( "須填寫 : 服務第一層分類" ) ;
@@ -92,7 +91,7 @@ describe( "" , () => {
         // render 元件
         render( <Wrapper/> ) ;
             
-        const input = screen.getByLabelText( "請輸入 _ 第一層分類 :" ) as any ;
+        const input = screen.getByLabelText( "請輸入 _ 第一層分類" ) as any ;
         const form  = screen.getByTestId('class-form') ;
 
 
